@@ -20,6 +20,16 @@ import java.util.List;
         }
 )
 @NoArgsConstructor
+@NamedQuery(
+        name = "Author.findByEmailDomain",
+        query = "select au from Author au where au.email like concat('%', ?1) " +
+                "order by rating desc "
+)
+@NamedNativeQuery(
+        name = "Author.findAllByNativeQuery",
+        query = "select * from data_jpa.my_schema.author au order by au.number_of_views desc",
+        resultClass = Author.class
+)
 public class Author extends BaseEntityStats{
     @Id
     @SequenceGenerator(name = "author_seq1",
@@ -36,16 +46,16 @@ public class Author extends BaseEntityStats{
     private String lastName;
     @Column(name = "email", columnDefinition = "TEXT UNIQUE NOT NULL")
     private String email;
-    @ManyToMany
-    @JoinTable(name = "author_blog",
-        schema = "my_schema",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = {
-                @JoinColumn(name = "blog_id")
-            }
-    )
-    private List<Blog> blogs;
-    @OneToMany
+//    @ManyToMany
+//    @JoinTable(name = "author_blog",
+//        schema = "my_schema",
+//            joinColumns = @JoinColumn(name = "author_id"),
+//            inverseJoinColumns = {
+//                @JoinColumn(name = "blog_id")
+//            }
+//    )
+//    private List<Blog> blogs;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
-    private List<Role> roles;
+    private Role role;
 }

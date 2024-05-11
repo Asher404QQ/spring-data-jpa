@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @DiscriminatorValue("FILE")
 public class File extends Resource{
-    @Column(name = "file", columnDefinition = "OID UNIQUE")
+    @Column(name = "file", columnDefinition = "OID")
     @Lob
     private byte[] file;
 }

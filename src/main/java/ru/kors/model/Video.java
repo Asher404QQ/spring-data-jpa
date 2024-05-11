@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @DiscriminatorValue("VIDEO")
 public class Video extends Resource{
-    @Column(name = "video", columnDefinition = "OID UNIQUE")
+    @Column(name = "video", columnDefinition = "OID")
     @Lob
     private byte[] video;
 }

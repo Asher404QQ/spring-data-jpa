@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 )
 @DiscriminatorValue("TEXT")
 public class Text extends Resource{
-    @Column(name = "text", columnDefinition = "TEXT UNIQUE")
+    @Column(name = "text", columnDefinition = "TEXT")
     private String text;
 }
 

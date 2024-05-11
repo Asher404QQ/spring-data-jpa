@@ -19,8 +19,7 @@ public class Post{
     @ManyToOne
     private Section section;
     @OneToOne
-    @JoinColumn(name = "resource_name")
-    @JoinColumn(name = "resource_url")
+    @JoinColumn(name = "resource_id")
     private Resource resource;
     @Embedded
     private BaseEntityMetadata baseEntityMetadata;

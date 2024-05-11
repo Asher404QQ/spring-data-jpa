@@ -20,8 +20,8 @@ public class Blog {
     private String title;
     @Column(name = "blog_description", columnDefinition = "TEXT")
     private String description;
-    @ManyToMany(mappedBy = "blogs")
-    private List<Author> authors;
+//    @ManyToMany(mappedBy = "blogs")
+//    private List<Author> authors;
     @OneToMany(mappedBy = "blog")
     private List<Section> sections;
     @Embedded
@@ -33,14 +33,14 @@ public class Blog {
     @Embedded
     private BaseEntityStats baseEntityStats;
 
-    public void addAuthor(Author author) {
-        this.authors.add(author);
-        author.getBlogs().add(this);
-    }
-
-    public void removeAuthor(Author author) {
-        this.authors.remove(author);
-        author.getBlogs().remove(this);
-    }
+//    public void addAuthor(Author author) {
+//        this.authors.add(author);
+//        author.getBlogs().add(this);
+//    }
+//
+//    public void removeAuthor(Author author) {
+//        this.authors.remove(author);
+//        author.getBlogs().remove(this);
+//    }
 
 }
